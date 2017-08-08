@@ -1,27 +1,31 @@
-﻿生成启动时间为 2017/8/5 6:47:57。
-     1>项目“C:\Users\S\Documents\GitHub\PythonDll\PythonDll\PythonDll\PythonDll.vcxproj”在节点 2 上(build 个目标)。
+﻿生成启动时间为 2017/8/8 19:41:25。
+     1>项目“C:\Users\a\Documents\GitHub\PythonDll\PythonDll\PythonDll\PythonDll\PythonDll.vcxproj”在节点 2 上(build 个目标)。
      1>InitializeBuildStatus:
-         正在创建“Debug\PythonDll.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+         正在对“Debug\PythonDll.unsuccessfulbuild”执行 Touch 任务。
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D PYTHONDLL_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt PythonDLL.cpp
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D PYTHONDLL_EXPORTS /D _WINDLL /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt PythonDLL.cpp
          PythonDLL.cpp
+     1>c:\users\a\documents\github\pythondll\pythondll\pythondll\pythondll\pythondll.cpp(22): warning C4018: “<”: 有符号/无符号不匹配
+     1>c:\users\a\documents\github\pythondll\pythondll\pythondll\pythondll\pythondll.cpp(58): warning C4018: “<”: 有符号/无符号不匹配
+     1>c:\users\a\documents\github\pythondll\pythondll\pythondll\pythondll\pythondll.cpp(72): warning C4018: “<”: 有符号/无符号不匹配
+     1>c:\users\a\documents\github\pythondll\pythondll\pythondll\pythondll\pythondll.cpp(74): warning C4244: “=”: 从“DWORD”转换到“char”，可能丢失数据
        ManifestResourceCompile:
          所有输出均为最新。
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\S\Documents\GitHub\PythonDll\PythonDll\Debug\PythonDll.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\PythonDll.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\S\Documents\GitHub\PythonDll\PythonDll\Debug\PythonDll.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\S\Documents\GitHub\PythonDll\PythonDll\Debug\PythonDll.lib" /MACHINE:X86 /DLL Debug\PythonDll.dll.embed.manifest.res
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\a\Documents\GitHub\PythonDll\PythonDll\PythonDll\Debug\PythonDll.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\PythonDll.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\a\Documents\GitHub\PythonDll\PythonDll\PythonDll\Debug\PythonDll.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\a\Documents\GitHub\PythonDll\PythonDll\PythonDll\Debug\PythonDll.lib" /MACHINE:X86 /DLL Debug\PythonDll.dll.embed.manifest.res
          Debug\PythonDLL.obj
-            正在创建库 C:\Users\S\Documents\GitHub\PythonDll\PythonDll\Debug\PythonDll.lib 和对象 C:\Users\S\Documents\GitHub\PythonDll\PythonDll\Debug\PythonDll.exp
+         WinSCard.Lib
        Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\PythonDll.dll.embed.manifest" /manifest Debug\PythonDll.dll.intermediate.manifest
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\PythonDll.dll.embed.manifest" /manifest Debug\PythonDll.dll.intermediate.manifest
          所有输出均为最新。
        LinkEmbedManifest:
          所有输出均为最新。
-         PythonDll.vcxproj -> C:\Users\S\Documents\GitHub\PythonDll\PythonDll\Debug\PythonDll.dll
+         PythonDll.vcxproj -> C:\Users\a\Documents\GitHub\PythonDll\PythonDll\PythonDll\Debug\PythonDll.dll
        FinalizeBuildStatus:
          正在删除文件“Debug\PythonDll.unsuccessfulbuild”。
          正在对“Debug\PythonDll.lastbuildstate”执行 Touch 任务。
-     1>已完成生成项目“C:\Users\S\Documents\GitHub\PythonDll\PythonDll\PythonDll\PythonDll.vcxproj”(build 个目标)的操作。
+     1>已完成生成项目“C:\Users\a\Documents\GitHub\PythonDll\PythonDll\PythonDll\PythonDll\PythonDll.vcxproj”(build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:01.42
+已用时间 00:00:00.95

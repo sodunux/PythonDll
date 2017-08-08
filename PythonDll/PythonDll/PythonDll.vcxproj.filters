@@ -23,5 +23,13 @@
     <ClInclude Include="PythonDll.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="WinSCard.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="WinSCard.Lib">
+      <Filter>源文件</Filter>
+    </Library>
   </ItemGroup>
 </Project>

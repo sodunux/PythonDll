@@ -1,5 +1,19 @@
-#define PythonDllAPI extern "C" __declspec(dllexport)
+#ifndef _PYTHONDLL_H
+#define _PYTHONDLL_H
 
-PythonDllAPI int func1();
-PythonDllAPI int func2();
-PythonDllAPI int func3();
+#define PythonDllAPI extern "C" __declspec(dllexport)
+#include "WinScard.h"
+
+PythonDllAPI int GetReaders(char* Readers);
+PythonDllAPI int ConnectReader(char* Reader);
+PythonDllAPI int TransmitReader(char* senddata,int slen,char* recedata,char * rlen);
+PythonDllAPI int DisconnectReader();
+
+extern SCARDCONTEXT hContext;
+extern int ReaderCnt;
+extern SCARDHANDLE hCardHandle;
+extern char ReaderNames[0x80];
+
+
+
+#endif
