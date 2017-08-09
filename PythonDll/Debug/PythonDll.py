@@ -28,11 +28,11 @@ class PyCard:
 				substr_start=substr_end+1
 			substr_end=Readerbuff.index('\x00',substr_start,strend+1)
 			self.ReaderNames.append(Readerbuff[substr_start:substr_end])
-
-		if ret==0:
-			print "Get Readers Succeed"
-		else :
-			print "Get Readers Failed"
+		print self.ReaderNames
+#		if ret==0:
+#			print "Get Readers Succeed"
+#		else :
+#			print "Get Readers Failed"
 		return ret
 
 	def PyConnectReader(self,ReaderID):
@@ -60,26 +60,29 @@ class PyCard:
 		
 		self.RespLen=unpack('B',resplen)[0]
 		self.RespData=b2a_hex(respbuff[0:self.RespLen])
-		print self.RespData
+		#print "<- "+self.RespData
 		return ret
 		
 	def PyDisconnectReader(self):
 		PyDisconnectReader=PyDll.DisconnectReader
 		PyDisconnectReader.restype=c_int
 		ret=PyDisconnectReader()
+
 		if ret==0:
-			print "Disconnect Reader Succeed"
+			print "Disconnect Reader Succeed!"
 		else : 
-			print "Disconnect Reader Failed"
-		return ret
+			print "Disconnect Reader Failed!"
 		return ret
 
 
-card=PyCard() 
-card.PyGetReader()
-card.PyConnectReader(0)
-card.PyTransmitReader("FF1901010102")
-card.PyDisconnectReader()
+
+
+
+	
+
+
+
+
 
 
 
