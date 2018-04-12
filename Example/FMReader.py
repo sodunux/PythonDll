@@ -7,9 +7,8 @@ class instruct:
 	ColdReset_3V="FF1901010102"
 	ColdReset_18V="FF1901010103"
 	PPS_CT="FFFF000101"
-	SEL_CT_30V="FF0100000121"
+	SEL_CT="FF0100000121"
 	SEL_CL="FF0100000102"
-
 	Reset17="FF1801000100"
 	FieldON_1="FF1801000101"
 	FieldON_2="FF1102260102"
@@ -21,8 +20,14 @@ class instruct:
 	AntiColl="FF18010206"
 	Select="FF18010301"
 	RATS="FF18010401"
-
-
+	Authent='FF18010901'
+	ReadBlock='FF18010501'
+	WriteBlock="FF18010611"
+	IncBlock="FF18011105"
+	DecBlock="FF18011205"
+	TransferBlock="FF18011401"
+	RestoreBlock="FF18011301"
+	Diselect="FF09010902CA01"
 
 class FMReader:
 	card=PyCard()
@@ -35,7 +40,7 @@ class FMReader:
 		
 
 	def InitTDA(self):
-		self.card.PyTransmitReader(self.ins.SEL_CT_30V)
+		self.card.PyTransmitReader(self.ins.SEL_CT)
 		self.card.PyTransmitReader(self.ins.InitTDA_1)
 		ret1=self.card.RespData
 		self.card.PyTransmitReader(self.ins.InitTDA_2)
@@ -124,12 +129,66 @@ class FMReader:
 		self.card.PyTransmitReader(self.ins.PPS_CL+pps1)
 		print "PPS-> "+self.card.RespData		
 
+	def MiAuthent(self,keytype,block,key):
+		self.card.PyTransmitReader(self.ins.Authent+keytype+block+key)
+		print "MiAuthent-> "+self.card.RespData
+
+	def MiRead(self,block):
+		self.card.PyTransmitReader(self.ins.ReadBlock+block)
+		print "MiRead-> "+self.card.RespData
+
+	def MiWrite(self,block,dat):
+		self.card.PyTransmitReader(self.ins.WriteBlock+block+dat)
+		print "MiWrite-> "+self.card.RespData
+
+	def MiIncrement(self,block,dat):
+		self.card.PyTransmitReader(self.ins.IncBlock+block+dat)
+		print "MiIncrement-> "+self.card.RespData	
+
+	def MiDecrement(self,block,dat):
+		self.card.PyTransmitReader(self.ins.DecBlock+block+dat)
+		print "MiDecrement-> "+self.card.RespData	
+
+	def MiTransfer(self,block):
+		self.card.PyTransmitReader(self.ins.TransferBlock+block)
+		print "MiTransfer-> "+self.card.RespData	
+
+	def MiRestore(self,block):
+		self.card.PyTransmitReader(self.ins.RestoreBlock+block)
+		print "MiRestore-> "+self.card.RespData			
+
+	def MiDiselect(self):
+		self.card.PyTransmitReader(self.ins.Diselect)
+		print "MiRestore-> "+self.card.RespData	
+
+	def DirectSendCL(self,crc_sel,dat): 
+		#crc_sel: no_crc(00),all_crc(01),rx_crc(02),tx_crc(03)
+		#do not support timeout config
+		self.card.PyTransmitReader(self.ins.SEL_CL)
+		sendlen=len(dat)
+		if (sendlen%2)==0:
+			sendlenstr=b2a_hex(pack('B',sendlen/2));
+			self.card.PyTransmitReader("FF09"+crc_sel+"09"+sendlenstr+dat)
+			print "DirectSendCL-> "+self.card.RespData
+		else :
+			print "DirectSendCL-> Input Wrong Data!"
+	def DirectSendCt(self,dat):
+		#do not support timeout config		
+		self.card.PyTransmitReader(self.ins.SEL_CT)
+		sendlen=len(dat)
+		if (sendlen%2)==0:
+			sendlenstr=b2a_hex(pack('B',sendlen/2));
+			self.card.PyTransmitReader("FF090009"+sendlenstr+dat)
+			print "DirectSendCT-> "+self.card.RespData
+		else :
+			print "DirectSendCT-> Input Wrong Data!"		
+
 	def InitCt(self,ReaderID):
 		self.GetReader()
 		self.ConnectReader(ReaderID)
 		self.Reset17()
 		self.InitTDA()
-		self.ColdReset("3V")
+		#self.ColdReset("3V")
 
 	def InitCl(self,ReaderID):
 		self.GetReader()
@@ -138,7 +197,8 @@ class FMReader:
 		self.Reset17()
 		self.FieldON()
 		self.Active()
-		self.Rats()
+		#self.Rats()
+
 	def __del__(self):
 		self.card.PyDisconnectReader()
 

@@ -50,7 +50,7 @@ class PyCard:
 		request=''
 		respbuff=''
 		resplen='\x00'
-		for i in range(0x80):
+		for i in range(0xFF):
 			respbuff+='\x00'
 		request=a2b_hex(sendstr)
 		PyTransmitReader=PyDll.TransmitReader
@@ -59,9 +59,15 @@ class PyCard:
 		ret=PyTransmitReader(request,len(request),respbuff,resplen)
 		
 		self.RespLen=unpack('B',resplen)[0]
-		self.RespData=b2a_hex(respbuff[0:self.RespLen])
-		#print "<- "+self.RespData
-		return ret
+		#special for len=1
+		if self.RespLen==0x01:
+			self.RespLen=0x02
+			subbuff=respbuff[0:self.RespLen]
+			self.RespData=b2a_hex(subbuff)[0:2]
+			self.RespLen=0x01
+		else :
+			subbuff=respbuff[0:self.RespLen]
+			self.RespData=b2a_hex(subbuff)		
 		
 	def PyDisconnectReader(self):
 		PyDisconnectReader=PyDll.DisconnectReader
